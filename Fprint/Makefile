@@ -16,6 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
+	@echo "Mission complete"
 
 %.o: %.c
 	$(GCC) $(CFLAGS) -c $< -o $@
