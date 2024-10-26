@@ -16,7 +16,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)  # Optional, to update the index
 
 %.o: %.c
 	$(GCC) $(CFLAGS) -c $< -o $@
