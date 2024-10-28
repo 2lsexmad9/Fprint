@@ -44,12 +44,10 @@ int	ft_printf(const char *str, ...)
 	int			i;
 	int			tot;
 
-	if (!str)
-		return (-1);
 	va_start(ap, str);
 	i = 0;
 	tot = 0;
-	while (str[i] != '\0')
+	while (str && str[i] != '\0')
 	{
 		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
 		{
@@ -58,15 +56,15 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 		{
-			write(1, &str[i], 1);
-			tot++;
+			if (write(1, &str[i], 1) != 1)
+				return (-1);
 			i++;
+			tot++;
 		}
 	}
 	va_end(ap);
 	return (tot);
 }
-
 /*#include <stdio.h>
 int main(void)
 {
