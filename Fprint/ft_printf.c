@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adal-bos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:10:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/01/20 20:07:14 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/27 23:06:39 by adal-bos          #+#    #+#             */
+/*   Updated: 2024/10/28 01:49:54 by adal-bos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,56 +70,77 @@ int	ft_printf(const char *str, ...)
 /*#include <stdio.h>
 int main(void)
 {
-    int a = -2147483645 ;
+    int a = -2147483645;
     int *ptr = &a;
-    ft_printf("ft_printfの%%p: %p\n", (void *)ptr);
-    printf("printfの%%p: %p\n", (void *)ptr);
-        
-    ft_printf("PachuruPachuruPachuru %u\n", "adal-bos", a, a);
-    printf("PachuruPachuruPachuru%u\n", "adal-bos", a, a);
 
-    ft_printf("%%%%%%%%%%\n");
-    printf("%%%%%%%%%%\n");
-    
-    ft_printf("test x: %x\ntest X: %X\n", a, a);
-    printf("test x: %x\ntest X: %X\n", a, a);
+    // Print the memory address of variable 'a'
+    printf("Memory address of 'a':\n");
+    printf("ft_printf: %p\n", (void *)ptr);
+    printf("printf: %p\n", (void *)ptr);
 
-    ft_printf(" %x \n", INT_MIN);
-    printf(" %x \n",  INT_MIN);
+    // Print the unsigned integer value of 'a'
+    printf("Unsigned integer value of 'a':\n");
+    printf("ft_printf: %u\n", a);
+    printf("printf: %u\n", a);
 
+    // Print percentage signs
+    printf("Percentage signs:\n");
+    printf("ft_printf: %%\n");
+    printf("printf: %%\n");
+
+    // Print the hexadecimal value of 'a' in lowercase and uppercase
+    printf("Hexadecimal value of 'a':\n");
+    printf("ft_printf: lowercase: %x, uppercase: %X\n", a, a);
+    printf("printf: lowercase: %x, uppercase: %X\n", a, a);
+
+    // Print the minimum integer value in hexadecimal
+    printf("Minimum integer value in hexadecimal:\n");
+    printf("ft_printf: %x\n", INT_MIN);
+    printf("printf: %x\n", INT_MIN);
+
+    // Set 'a' to 42
     a = 42;
 
+    // Print the hexadecimal value of 'a' in lowercase and uppercase
+    printf("Hexadecimal value of 'a' (42):\n");
+    printf("ft_printf: lowercase: %x, uppercase: %X\n", a, a);
+    printf("printf: lowercase: %x, uppercase: %X\n", a, a);
 
-    ft_printf("test x: %x\ntest X: %X\n", a, a);
-    printf("test x: %x\ntest X: %X\n", a, a);
+    // Print the minimum and maximum integer values in hexadecimal
+    printf("Integer limits in hexadecimal:\n");
+    printf("ft_printf: Minimum: %x, Maximum: %x\n", INT_MIN, INT_MAX);
+    printf("printf: Minimum: %x, Maximum: %x\n", INT_MIN, INT_MAX);
 
-    ft_printf("INT_MIN: %x\n", INT_MIN);
-    printf("INT_MIN: %x\n", INT_MIN);
+    // Print the maximum unsigned integer value in hexadecimal
+    printf("Maximum unsigned integer value in hexadecimal:\n");
+    printf("ft_printf: %x\n", UINT_MAX);
+    printf("printf: %x\n", UINT_MAX);
 
-    ft_printf("INT_MAX: %x\n", INT_MAX);
-    printf("INT_MAX: %x\n", INT_MAX);
+    // Print large positive and negative integers in hexadecimal
+    printf("Large integer values in hexadecimal:\n");
+    printf("ft_printf: Positive: %x, Negative: %x\n", INT_MAX, INT_MIN);
+    printf("printf: Positive: %x, Negative: %x\n", INT_MAX, INT_MIN);
 
-    ft_printf("UINT_MAX: %x\n", UINT_MAX);
-    printf("UINT_MAX: %x\n", UINT_MAX);
+    // Print N of characters printed and the hexadecimal representation of 10
+    printf("Number of characters printed and hexadecimal value of 10:\n");
+    printf("ft_printf: Count: %d, Hex: %x\n", ft_printf("Zero: %x\n", 10), 10);
+    printf("printf: Count: %d, Hex: %x\n", printf("Zero: %x\n", 10), 10);
 
-    ft_printf("Large positive int: %x\n", INT_MAX);
-    printf("Large positive int: %x\n", INT_MAX);
+    // Print N of characters printed and the hexadecimal representation of -10
+    printf("Number of characters printed and hexadecimal value of -10:\n");
+    printf("ft_printf: Count: %d, Hex: %X\n", ft_printf("Zero: %X\n", -10), -10);
+    printf("printf: Count: %d, Hex: %X\n", printf("Zero: %X\n", -10), -10);
 
-    ft_printf("Large negative int: %x\n", INT_MIN);
-    printf("Large negative int: %x\n", INT_MIN);
+    // Print a simple hexadecimal value
+    printf("Simple hexadecimal value:\n");
+    printf("ft_printf: %x\n", 0xABCD);
+    printf("printf: %x\n", 0xABCD);
 
-    printf("%d\n", ft_printf("Zero: %x\n", 10));
-    printf("%d\n", printf("Zero: %x\n", 10));
-    
-    printf("%d\n", ft_printf("Zero: %X\n", -10));
-    printf("%d\n", printf("Zero: %X\n", -10));
-
-    ft_printf("Simple hex: %x\n", 0xABCD);
-    printf("Simple hex: %x\n", 0xABCD);
-
+    // Print the address of a null pointer
     void *ptr2 = NULL;
-    ft_printf("%p\n", (void *)ptr2);
-    printf("%p\n", (void *)ptr2);
-    printf("%d\n",ft_printf("%p", (void *)ptr2));
-    printf("%d\n",printf("%p", (void *)ptr2));
+    printf("Null pointer address:\n");
+    printf("ft_printf: %p\n", ptr2);
+    printf("printf: %p\n", ptr2);
+    printf("ft_printf: Count: %d\n", ft_printf("%p", ptr2));
+    printf("printf: Count: %d\n", printf("%p", ptr2));
 }*/
